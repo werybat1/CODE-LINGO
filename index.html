@@ -1,0 +1,3245 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0, viewport-fit=cover">
+    <title>CodeKids - Учимся программировать</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --duo-green: #58cc02;
+            --duo-green-dark: #46a302;
+            --duo-green-light: #7dd83a;
+            --duo-blue: #1cb0f6;
+            --duo-blue-dark: #0099d4;
+            --duo-orange: #ff9f0a;
+            --duo-pink: #ff4b4b;
+            --duo-yellow: #ffc800;
+            --duo-purple: #9b59b6;
+            --duo-white: #ffffff;
+            --duo-gray-50: #fafafa;
+            --duo-gray-100: #f5f5f5;
+            --duo-gray-200: #eeeeee;
+            --duo-gray-300: #e0e0e0;
+            --duo-gray-400: #bdbdbd;
+            --duo-gray-500: #9e9e9e;
+            --duo-gray-600: #757575;
+            --duo-gray-700: #616161;
+            --duo-gray-800: #424242;
+            --duo-gray-900: #212121;
+            --duo-black: #1a1a1a;
+            
+            --primary: var(--duo-green);
+            --primary-dark: var(--duo-green-dark);
+            --primary-light: var(--duo-green-light);
+            --secondary: var(--duo-blue);
+            --secondary-dark: var(--duo-blue-dark);
+            --danger: var(--duo-pink);
+            --warning: var(--duo-orange);
+            --success: var(--duo-green);
+            --info: var(--duo-blue);
+            --purple: var(--duo-purple);
+            
+            --bg-main: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --bg-tertiary: #f1f3f5;
+            --text-primary: #1a1a1a;
+            --text-secondary: #6c757d;
+            --text-tertiary: #adb5bd;
+            --border: #e9ecef;
+            --border-light: #f1f3f5;
+            
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.15);
+            --shadow-xl: 0 12px 32px rgba(0, 0, 0, 0.18);
+            --shadow-colored: 0 4px 20px rgba(88, 204, 2, 0.25);
+            
+            --card-hover: #f8f9fa;
+            --gradient-primary: linear-gradient(135deg, #58cc02 0%, #46a302 100%);
+            --gradient-secondary: linear-gradient(135deg, #1cb0f6 0%, #0099d4 100%);
+            --gradient-warm: linear-gradient(135deg, #ff9a56 0%, #ff6b6b 100%);
+            --gradient-cool: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            
+            --radius-sm: 8px;
+            --radius: 12px;
+            --radius-md: 16px;
+            --radius-lg: 20px;
+            --radius-xl: 24px;
+            --radius-full: 9999px;
+            
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        [data-theme="dark"] {
+            --primary: #7dd83a;
+            --primary-dark: #58cc02;
+            --primary-light: #9ee85f;
+            --secondary: #4fc3f7;
+            --secondary-dark: #1cb0f6;
+            --danger: #ff6b6b;
+            --warning: #ffb74d;
+            --success: #7dd83a;
+            --info: #4fc3f7;
+            
+            --bg-main: #1a1a1a;
+            --bg-secondary: #242424;
+            --bg-tertiary: #2d2d2d;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+            --text-tertiary: #808080;
+            --border: #333333;
+            --border-light: #2d2d2d;
+            
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+            --shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5);
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.6);
+            --shadow-xl: 0 12px 32px rgba(0, 0, 0, 0.7);
+            --shadow-colored: 0 4px 20px rgba(125, 216, 58, 0.3);
+            
+            --card-hover: #2d2d2d;
+            --gradient-primary: linear-gradient(135deg, #7dd83a 0%, #58cc02 100%);
+            --gradient-secondary: linear-gradient(135deg, #4fc3f7 0%, #1cb0f6 100%);
+        }
+
+        html {
+            height: 100%;
+            width: 100%;
+            overflow-x: hidden;
+            -webkit-overflow-scrolling: touch;
+            background: var(--bg-secondary);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            line-height: 1.6;
+            font-size: 16px;
+            position: relative;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            padding-bottom: 80px; /* Space for bottom navigation */
+            box-sizing: border-box;
+            overflow-x: hidden;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* iOS specific fixes */
+        @supports (-webkit-touch-callout: none) {
+            body {
+                height: -webkit-fill-available;
+                min-height: -webkit-fill-available;
+            }
+            .page {
+                min-height: -webkit-fill-available;
+                height: auto;
+            }
+        }
+
+        /* Header */
+        .app-header {
+            background: var(--bg-main);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 24px;
+            position: sticky;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: var(--shadow-sm);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        .app-header:hover {
+            box-shadow: var(--shadow);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            letter-spacing: -0.5px;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo i {
+            font-size: 30px;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-stats {
+            display: none !important;
+        }
+
+        .stat-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--text-primary);
+            transition: var(--transition);
+            cursor: default;
+        }
+
+        .stat-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .stat-badge i {
+            font-size: 16px;
+        }
+
+        .stat-badge.coins {
+            color: var(--warning);
+        }
+
+        .stat-badge.xp {
+            color: var(--secondary);
+        }
+
+        .stat-badge.streak {
+            color: var(--danger);
+        }
+
+        /* Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.98);
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-around;
+            padding: 8px 0 16px;
+            z-index: 1000;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+            height: 75px;
+            box-sizing: border-box;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        [data-theme="dark"] .bottom-nav {
+            background: rgba(30, 30, 30, 0.98);
+        }
+
+        .nav-item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            padding: 10px 12px;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-size: 11px;
+            font-weight: 700;
+            position: relative;
+            border-radius: var(--radius);
+            height: 100%;
+        }
+
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 3px;
+            background: var(--gradient-primary);
+            border-radius: 0 0 4px 4px;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .nav-item i {
+            font-size: 28px;
+            transition: var(--transition);
+            margin-bottom: 3px;
+            color: var(--text-primary);
+            filter: drop-shadow(0 2px 3px rgba(0,0,0,0.2));
+            -webkit-text-stroke: 1px var(--bg-main);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .nav-item.active {
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+        
+        .nav-item.active i {
+            color: var(--primary) !important;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.25));
+        }
+
+        .nav-item.active::before {
+            opacity: 1;
+        }
+
+        .nav-item.active i {
+            transform: scale(1.15);
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+        }
+
+        .nav-item:hover {
+            color: var(--primary);
+            background: rgba(88, 204, 2, 0.05);
+        }
+
+        .nav-item:active {
+            transform: scale(0.95);
+        }
+
+        /* Pages */
+        .page {
+            display: none;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            box-sizing: border-box;
+            padding-bottom: 100px; /* Extra padding to account for bottom nav */
+            min-height: calc(100vh - 70px); /* Viewport height minus bottom nav height */
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 0.6;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* Home Page */
+        .welcome-card {
+            background: var(--gradient-primary);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            color: white;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-colored);
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .welcome-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        .welcome-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 32px rgba(88, 204, 2, 0.35);
+        }
+
+        .welcome-card h1 {
+            font-size: 32px;
+            margin-bottom: 12px;
+            font-weight: 800;
+            position: relative;
+            z-index: 1;
+            letter-spacing: -0.5px;
+        }
+
+        .welcome-card p {
+            opacity: 0.95;
+            font-size: 17px;
+            position: relative;
+            z-index: 1;
+            font-weight: 500;
+        }
+
+        .streak-card {
+            background: var(--bg-main);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .streak-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--gradient-warm);
+        }
+
+        .streak-card:hover {
+            transform: translateX(4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary);
+        }
+
+        .streak-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .streak-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--gradient-warm);
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: 0 4px 16px rgba(255, 107, 107, 0.3);
+            animation: float 3s ease-in-out infinite;
+            position: relative;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .streak-icon::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: var(--radius-full);
+            background: var(--gradient-warm);
+            opacity: 0.3;
+            filter: blur(8px);
+            z-index: -1;
+            animation: pulse-ring 2s ease-out infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% { transform: scale(0.8); opacity: 1; }
+            100% { transform: scale(1.4); opacity: 0; }
+        }
+
+        .streak-text h3 {
+            font-size: 18px;
+            margin-bottom: 4px;
+        }
+
+        .streak-text p {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .daily-goal {
+            background: var(--bg-main);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .daily-goal:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .daily-goal h3 {
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 14px;
+            background: var(--bg-tertiary);
+            border-radius: var(--radius-full);
+            overflow: hidden;
+            margin-bottom: 12px;
+            position: relative;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-full);
+            transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shine 2s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .progress-text {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        /* Courses Page */
+        .page-header {
+            margin: 0 0 24px 0;
+            padding: 0 0 20px 0;
+            background: transparent;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .page-header h2 {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+        }
+
+        .page-header p {
+            color: var(--text-secondary);
+            font-size: 17px;
+            font-weight: 500;
+        }
+
+        .courses-grid {
+            display: grid;
+            gap: 15px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        }
+
+        .course-card {
+            background: var(--bg-main);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .course-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: var(--transition);
+        }
+
+        .course-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
+        }
+
+        .course-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .course-card:active {
+            transform: translateY(-4px) scale(0.98);
+        }
+
+        .course-image {
+            height: 180px;
+            background: var(--gradient-cool);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .course-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 100%);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .course-card:hover .course-image::before {
+            opacity: 1;
+        }
+
+        .course-image.html {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .course-image.python {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .course-image.roblox {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+
+        .course-image i {
+            font-size: 88px;
+            color: white;
+            opacity: 0.95;
+            transition: var(--transition);
+            position: relative;
+            z-index: 1;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+        }
+
+        .course-card:hover .course-image i {
+            transform: scale(1.1) rotate(5deg);
+            opacity: 1;
+        }
+
+        .course-progress {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(255, 255, 255, 0.98);
+            padding: 8px 14px;
+            border-radius: var(--radius-full);
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--primary);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            z-index: 2;
+            transition: var(--transition);
+        }
+
+        .course-card:hover .course-progress {
+            transform: scale(1.05);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .course-body {
+            padding: 24px;
+        }
+
+        .course-body h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.3;
+        }
+
+        .course-body p {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 18px;
+            line-height: 1.6;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .course-lessons {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border-radius: var(--radius);
+            border: none;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: var(--radius-full);
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+            box-shadow: 0 4px 12px rgba(88, 204, 2, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(88, 204, 2, 0.4);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        .btn span {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Course Detail Page */
+        .course-detail-header {
+            background: var(--bg-main);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .course-detail-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+        }
+
+        .course-detail-header:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .back-btn {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            padding: 10px 18px;
+            border-radius: var(--radius);
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .back-btn:hover {
+            background: var(--bg-main);
+            border-color: var(--primary);
+            transform: translateX(-4px);
+            box-shadow: var(--shadow);
+        }
+
+        .back-btn:active {
+            transform: translateX(-2px) scale(0.98);
+        }
+
+        .course-detail-header h2 {
+            font-size: 26px;
+            margin-bottom: 8px;
+            font-weight: 800;
+        }
+
+        .course-detail-header p {
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .lessons-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .lesson-item {
+            background: var(--bg-main);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lesson-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--gradient-primary);
+            transform: scaleY(0);
+            transition: var(--transition);
+        }
+
+        .lesson-item:hover {
+            transform: translateX(8px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary);
+        }
+
+        .lesson-item:hover::before {
+            transform: scaleY(1);
+        }
+
+        .lesson-item.completed {
+            background: linear-gradient(135deg, rgba(88, 204, 2, 0.08) 0%, rgba(88, 204, 2, 0.03) 100%);
+            border-color: var(--primary);
+        }
+
+        .lesson-item.completed::before {
+            transform: scaleY(1);
+        }
+
+        .lesson-number {
+            width: 52px;
+            height: 52px;
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 20px;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(88, 204, 2, 0.3);
+            transition: var(--transition);
+        }
+
+        .lesson-item:hover .lesson-number {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(88, 204, 2, 0.4);
+        }
+
+        .lesson-item.completed .lesson-number {
+            background: var(--gradient-primary);
+            box-shadow: 0 4px 16px rgba(88, 204, 2, 0.4);
+        }
+
+        .lesson-content {
+            flex: 1;
+        }
+
+        .lesson-content h4 {
+            font-size: 16px;
+            margin-bottom: 6px;
+            font-weight: 700;
+        }
+
+        .lesson-content p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .lesson-meta {
+            display: flex;
+            gap: 15px;
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .lesson-meta span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .lesson-completed-badge {
+            color: var(--success);
+            font-weight: 700;
+        }
+
+        .play-btn {
+            width: 52px;
+            height: 52px;
+            background: var(--gradient-primary);
+            border: none;
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            transition: var(--transition);
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(88, 204, 2, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .play-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(0);
+            border-radius: var(--radius-full);
+            transition: var(--transition);
+        }
+
+        .play-btn:hover::before {
+            transform: scale(1);
+        }
+
+        .play-btn:hover {
+            transform: scale(1.15);
+            box-shadow: 0 6px 20px rgba(88, 204, 2, 0.4);
+        }
+
+        .play-btn:active {
+            transform: scale(1.05);
+        }
+
+        .lesson-item.completed .play-btn {
+            background: var(--gradient-primary);
+            box-shadow: 0 4px 12px rgba(88, 204, 2, 0.4);
+        }
+
+        /* Lesson Page */
+        .lesson-page {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .video-wrapper {
+            background: var(--bg-main);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+
+        .video-wrapper:hover {
+            box-shadow: var(--shadow-lg);
+        }
+
+        .video-container {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #000;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+        }
+
+        .video-container:hover {
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .lesson-description {
+            background: var(--bg-main);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .lesson-description:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .lesson-description h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .lesson-description p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        /* Quiz Section */
+        .quiz-section {
+            background: var(--bg-main);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-md);
+            color: var(--text-primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quiz-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+        }
+
+        #quiz-questions-container {
+            color: var(--text-primary);
+            visibility: visible;
+            opacity: 1;
+        }
+
+        #quiz-questions-container * {
+            visibility: visible;
+        }
+
+        .question-text,
+        .answer-option span {
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+        .quiz-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .quiz-header h3 {
+            font-size: 20px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-primary);
+        }
+
+        .quiz-score {
+            background: var(--bg-secondary);
+            padding: 8px 16px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 14px;
+            color: var(--text-primary);
+        }
+
+        .question-card {
+            margin-bottom: 25px;
+            color: var(--text-primary, #1f1f1f);
+        }
+
+        [data-theme="dark"] .question-card {
+            color: #ffffff;
+        }
+
+        .question-number {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .question-text {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            line-height: 1.5;
+            color: var(--text-primary, #1f1f1f);
+            min-height: 24px;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        [data-theme="dark"] .question-text {
+            color: #ffffff;
+        }
+
+        .answers-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .answer-option {
+            background: var(--bg-secondary);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 15px 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .answer-option span {
+            color: var(--text-primary, #1f1f1f);
+            flex: 1;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            line-height: 1.5;
+        }
+
+        [data-theme="dark"] .answer-option span {
+            color: #ffffff;
+        }
+
+        [data-theme="dark"] .answer-letter {
+            color: #1f1f1f;
+            background: #ffffff;
+        }
+
+        .answer-option:hover {
+            border-color: var(--primary);
+            background: var(--bg-main);
+        }
+
+        .answer-option.selected {
+            border-color: var(--primary);
+            background: rgba(88, 204, 2, 0.1);
+        }
+
+        .answer-option.correct {
+            border-color: var(--success);
+            background: rgba(88, 204, 2, 0.2);
+        }
+
+        .answer-option.incorrect {
+            border-color: var(--danger);
+            background: rgba(255, 75, 75, 0.1);
+        }
+
+        .answer-option.disabled {
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .answer-letter {
+            width: 36px;
+            height: 36px;
+            background: var(--bg-main);
+            border: 2px solid var(--border);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+            color: var(--text-primary);
+            transition: var(--transition);
+            font-size: 14px;
+        }
+
+        .answer-option:hover .answer-letter {
+            border-color: var(--primary);
+            background: var(--primary);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .answer-option.selected .answer-letter {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .quiz-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .btn-submit {
+            flex: 1;
+            padding: 16px 24px;
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            border-radius: var(--radius);
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(88, 204, 2, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-submit::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: var(--radius-full);
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn-submit:hover:not(:disabled)::before {
+            width: 400px;
+            height: 400px;
+        }
+
+        .btn-submit:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(88, 204, 2, 0.4);
+        }
+
+        .btn-submit:active:not(:disabled) {
+            transform: translateY(0) scale(0.98);
+        }
+
+        .btn-submit:disabled {
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+            cursor: not-allowed;
+            box-shadow: none;
+            opacity: 0.6;
+        }
+
+        .quiz-result {
+            background: var(--gradient-primary);
+            border-radius: var(--radius-md);
+            padding: 40px;
+            text-align: center;
+            color: white;
+            box-shadow: var(--shadow-colored);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quiz-result::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        .quiz-result h3 {
+            font-size: 32px;
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 1;
+            font-weight: 800;
+        }
+
+        .quiz-result .score {
+            font-size: 64px;
+            font-weight: 800;
+            margin: 24px 0;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            animation: scaleIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .quiz-result p {
+            font-size: 17px;
+            opacity: 0.95;
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
+            font-weight: 500;
+        }
+
+        .btn-next-lesson {
+            background: white;
+            color: var(--primary);
+            padding: 16px 32px;
+            border: none;
+            border-radius: var(--radius);
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-next-lesson:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-next-lesson:active {
+            transform: translateY(0) scale(1);
+        }
+
+        /* Profile Page */
+        .profile-header {
+            background: var(--gradient-secondary);
+            border-radius: var(--radius-md);
+            padding: 40px;
+            color: white;
+            text-align: center;
+            margin-bottom: 24px;
+            box-shadow: 0 8px 32px rgba(28, 176, 246, 0.35);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        .avatar {
+            width: 110px;
+            height: 110px;
+            background: white;
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 54px;
+            color: var(--secondary);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+            position: relative;
+            z-index: 1;
+            transition: var(--transition);
+            border: 4px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .avatar:hover {
+            transform: scale(1.05) rotate(5deg);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .profile-header h2 {
+            font-size: 24px;
+            margin-bottom: 5px;
+            font-weight: 800;
+        }
+
+        .level-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 6px 16px;
+            border-radius: 20px;
+            display: inline-block;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background: var(--bg-main);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: var(--transition);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary);
+        }
+
+        .stat-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .stat-value {
+            font-size: 32px;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+            transition: var(--transition);
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat-card:hover .stat-value {
+            transform: scale(1.1);
+        }
+
+        .stat-card:nth-child(2) .stat-value {
+            color: var(--secondary);
+        }
+
+        .stat-card:nth-child(3) .stat-value {
+            color: var(--danger);
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        .progress-section {
+            background: var(--bg-main);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .progress-section:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .progress-section h3 {
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .level-progress-section {
+            background: var(--bg-main);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .level-progress-section:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .achievements-section {
+            background: var(--bg-main);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .achievements-section:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .achievement-badge {
+            background: var(--bg-secondary);
+            border: 2px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+            cursor: default;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .achievement-badge::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .achievement-badge.earned {
+            background: linear-gradient(135deg, rgba(88, 204, 2, 0.12) 0%, rgba(88, 204, 2, 0.06) 100%);
+            border-color: var(--primary);
+            box-shadow: 0 4px 12px rgba(88, 204, 2, 0.2);
+        }
+
+        .achievement-badge.earned::before {
+            opacity: 0.1;
+        }
+
+        .achievement-badge:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: var(--shadow-md);
+        }
+
+        .achievement-badge.earned:hover {
+            box-shadow: 0 6px 20px rgba(88, 204, 2, 0.3);
+        }
+
+        .achievement-badge i {
+            font-size: 36px;
+            color: var(--text-secondary);
+            transition: var(--transition);
+            position: relative;
+            z-index: 1;
+            filter: grayscale(100%);
+        }
+
+        .achievement-badge.earned i {
+            color: var(--primary);
+            filter: grayscale(0%);
+            animation: bounce 0.6s ease;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .achievement-badge span {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .achievement-badge.earned span {
+            color: var(--text-primary);
+        }
+
+        /* Quiz Timer */
+        .quiz-timer {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            padding: 12px 18px;
+            border-radius: var(--radius);
+            font-weight: 700;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .quiz-timer:hover {
+            box-shadow: var(--shadow);
+        }
+
+        .quiz-timer.warning {
+            background: rgba(255, 159, 10, 0.1);
+            color: var(--warning);
+        }
+
+        .quiz-timer.danger {
+            background: rgba(255, 75, 75, 0.1);
+            color: var(--danger);
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .quiz-progress-indicator {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .quiz-progress-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--border);
+            transition: all 0.3s;
+        }
+
+        .quiz-progress-dot.answered {
+            background: var(--secondary);
+        }
+
+        .quiz-progress-dot.current {
+            background: var(--primary);
+            transform: scale(1.3);
+        }
+
+        .quiz-question-counter {
+            background: var(--bg-secondary);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: inline-block;
+            color: var(--text-secondary);
+        }
+
+        /* Question navigation */
+        .question-nav {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn-nav {
+            flex: 1;
+            padding: 14px;
+            background: var(--bg-secondary);
+            border: 2px solid var(--border);
+            border-radius: var(--radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--text-primary);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-nav:hover:not(:disabled) {
+            background: var(--bg-main);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-nav:active:not(:disabled) {
+            transform: translateY(0) scale(0.98);
+        }
+
+        .btn-nav:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            background: var(--bg-tertiary);
+        }
+
+        /* Toast Notifications */
+        .toast {
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--text-primary);
+            color: var(--bg-main);
+            padding: 16px 24px;
+            border-radius: 12px;
+            font-weight: 600;
+            z-index: 2000;
+            opacity: 0;
+            transition: all 0.3s;
+            box-shadow: 0 4px 20px var(--shadow);
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .app-header {
+                padding: 10px 15px;
+            }
+
+            .logo {
+                font-size: 20px;
+            }
+
+            .logo i {
+                font-size: 24px;
+            }
+
+            .stat-badge {
+                padding: 5px 10px;
+                font-size: 12px;
+            }
+
+            .stat-badge i {
+                font-size: 14px;
+            }
+
+            .page {
+                padding: 15px;
+            }
+
+            .welcome-card h1 {
+                font-size: 24px;
+            }
+
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
+            }
+
+            .stat-card {
+                padding: 15px 10px;
+            }
+
+            .stat-value {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .welcome-card {
+                padding: 20px;
+            }
+
+            .welcome-card h1 {
+                font-size: 22px;
+            }
+
+            .lesson-item {
+                padding: 15px;
+            }
+
+            .lesson-number,
+            .play-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
+
+            .question-text {
+                font-size: 16px;
+            }
+
+            .answer-option {
+                padding: 12px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="app-header">
+        <div class="header-left">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>CodeKids</span>
+            </div>
+        </div>
+        <div class="header-stats">
+            <div class="stat-badge coins">
+                <i class="fas fa-coins"></i>
+                <span id="header-coins">120</span>
+            </div>
+            <div class="stat-badge streak">
+                <i class="fas fa-fire"></i>
+                <span id="header-streak">3</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Home Page -->
+    <div id="home" class="page active">
+        <div class="welcome-card" id="welcome-card">
+            <h1 id="welcome-title">🎉 Загрузка...</h1>
+            <p id="welcome-subtitle">Готов к новым знаниям сегодня?</p>
+        </div>
+
+        <div class="streak-card" id="streak-card">
+            <div class="streak-info">
+                <div class="streak-icon">🔥</div>
+                <div class="streak-text">
+                    <h3 id="streak-days">0 дней подряд</h3>
+                    <p id="streak-message">Начни свою серию!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="daily-goal">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                <h3>📊 Дневная цель</h3>
+                <span id="daily-xp-text" style="font-weight: 700; color: var(--primary);">0 / 20 XP</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="daily-progress" style="width: 0%"></div>
+            </div>
+            <p class="progress-text" id="daily-progress-text">Начни свой первый урок!</p>
+        </div>
+
+        <div class="stats-grid" style="margin-bottom: 20px;">
+            <div class="stat-card">
+                <div class="stat-value" id="stat-xp">0</div>
+                <div class="stat-label">⭐ Опыт</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="stat-level">1</div>
+                <div class="stat-label">📈 Уровень</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="stat-coins">0</div>
+                <div class="stat-label">💰 Монеты</div>
+            </div>
+        </div>
+
+        <div class="level-progress-section">
+            <h3 style="margin-bottom: 10px;">До следующего уровня</h3>
+            <div class="progress-bar">
+                <div class="progress-fill" id="level-progress" style="width: 0%"></div>
+            </div>
+            <p class="progress-text" id="level-progress-text">0 / 100 XP</p>
+        </div>
+
+        <div class="achievements-section" id="achievements-section" style="margin-top: 20px;">
+            <h3 style="margin-bottom: 15px;">🏆 Достижения</h3>
+            <div id="achievements-list" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 10px;"></div>
+        </div>
+
+        <div class="quick-actions" style="margin-top: 25px;">
+            <button class="btn btn-primary" onclick="showPage('courses')" style="width: 100%; padding: 15px; font-size: 16px;">
+                <i class="fas fa-book"></i> Выбрать курс
+            </button>
+        </div>
+    </div>
+
+    <!-- Courses Page -->
+    <div id="courses" class="page">
+        <div class="page-header">
+            <h2>📚 Все курсы</h2>
+            <p>Выбери то, что тебе интересно</p>
+        </div>
+        <div class="courses-grid" id="courses-list"></div>
+    </div>
+
+    <!-- Course Detail Page -->
+    <div id="course-detail" class="page">
+        <div class="course-detail-header">
+            <button class="back-btn" onclick="showPage('courses')">
+                <i class="fas fa-arrow-left"></i> Назад
+            </button>
+            <h2 id="course-title">Загрузка...</h2>
+            <p id="course-description"></p>
+        </div>
+        <div class="lessons-list" id="lessons-list"></div>
+    </div>
+
+    <!-- Lesson Page -->
+    <div id="lesson" class="page">
+        <div class="lesson-page">
+            <button class="back-btn" onclick="backToCourse()">
+                <i class="fas fa-arrow-left"></i> Назад к урокам
+            </button>
+            
+            <div class="video-wrapper">
+                <div class="video-container" id="lesson-video"></div>
+            </div>
+
+            <div class="lesson-description" id="lesson-description-content"></div>
+
+            <div class="quiz-section" id="quiz-section"></div>
+        </div>
+    </div>
+
+    <!-- Profile Page -->
+    <div id="profile" class="page">
+        <div class="profile-header" id="profile-header">
+            <div class="avatar">
+                <i class="fas fa-user"></i>
+            </div>
+            <h2 id="profile-name">Загрузка...</h2>
+            <div class="level-badge" id="profile-level">Уровень 1</div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value" id="profile-coins">0</div>
+                <div class="stat-label">💰 Монеты</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="profile-xp">0</div>
+                <div class="stat-label">⭐ Опыт</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="profile-streak">0</div>
+                <div class="stat-label">🔥 Серия</div>
+            </div>
+        </div>
+
+        <div class="progress-section">
+            <h3>📈 До следующего уровня</h3>
+            <div class="progress-bar">
+                <div class="progress-fill" id="profile-level-progress" style="width: 0%"></div>
+            </div>
+            <p class="progress-text" id="profile-level-text">0 / 100 XP</p>
+        </div>
+
+        <div class="progress-section" style="margin-top: 20px;">
+            <h3>📊 Статистика курсов</h3>
+            <div id="profile-courses-stats"></div>
+        </div>
+
+        <div class="progress-section" style="margin-top: 20px;">
+            <h3>🏆 Достижения</h3>
+            <div id="profile-achievements"></div>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <button class="nav-item active" onclick="showPage('home')">
+            <i class="fas fa-home"></i>
+            <span>Главная</span>
+        </button>
+        <button class="nav-item" onclick="showPage('courses')">
+            <i class="fas fa-book"></i>
+            <span>Курсы</span>
+        </button>
+        <button class="nav-item" onclick="showPage('profile')">
+            <i class="fas fa-user"></i>
+            <span>Профиль</span>
+        </button>
+    </nav>
+
+    <script>
+        // Configuration
+        const config = {
+            currentCourse: null,
+            currentLesson: null,
+            courses: [
+                {
+                    id: 'html',
+                    title: 'HTML для начинающих',
+                    description: 'Научись создавать веб-страницы с нуля',
+                    icon: 'fa-html5',
+                    type: 'html',
+                    lessons: [
+                        {
+                            id: 1,
+                            title: 'Введение в HTML',
+                            description: 'Основы HTML, теги, структура документа',
+                            duration: '15:30',
+                            videoId: 'HcOc7P5BMi4',
+                            completed: false,
+                            quiz: [
+                                {
+                                    question: 'Что означает HTML?',
+                                    answers: [
+                                        'HyperText Markup Language',
+                                        'High Tech Modern Language',
+                                        'Home Tool Markup Language',
+                                        'Hyperlinks and Text Markup Language'
+                                    ],
+                                    correct: 0
+                                },
+                                {
+                                    question: 'Какой тег используется для создания заголовка самого высокого уровня?',
+                                    answers: ['<heading>', '<h6>', '<h1>', '<head>'],
+                                    correct: 2
+                                },
+                                {
+                                    question: 'Какой тег используется для создания ссылки?',
+                                    answers: ['<link>', '<a>', '<href>', '<url>'],
+                                    correct: 1
+                                },
+                                {
+                                    question: 'Что находится между тегами <title> и </title>?',
+                                    answers: [
+                                        'Название сайта в браузере',
+                                        'Основное содержимое страницы',
+                                        'Заголовок страницы',
+                                        'Ничего'
+                                    ],
+                                    correct: 0
+                                },
+                                {
+                                    question: 'Какой тег используется для вставки изображения?',
+                                    answers: ['<image>', '<img>', '<picture>', '<photo>'],
+                                    correct: 1
+                                }
+                            ]
+                        },
+                        {
+                            id: 2,
+                            title: 'Основные теги HTML',
+                            description: 'Работа с текстом, ссылками и изображениями',
+                            duration: '18:45',
+                            videoId: 'salY_Sm6mv4',
+                            completed: false,
+                            quiz: [
+                                {
+                                    question: 'Какой тег делает текст жирным?',
+                                    answers: ['<bold>', '<b>', '<strong>', '<b> и <strong>'],
+                                    correct: 3
+                                },
+                                {
+                                    question: 'Как создать нумерованный список?',
+                                    answers: ['<ul>', '<ol>', '<list>', '<nl>'],
+                                    correct: 1
+                                },
+                                {
+                                    question: 'Какой атрибут определяет адрес ссылки?',
+                                    answers: ['src', 'link', 'href', 'url'],
+                                    correct: 2
+                                },
+                                {
+                                    question: 'Как создать перенос строки?',
+                                    answers: ['<break>', '<br>', '<lb>', '<newline>'],
+                                    correct: 1
+                                },
+                                {
+                                    question: 'Какой тег используется для создания параграфа?',
+                                    answers: ['<paragraph>', '<p>', '<para>', '<pg>'],
+                                    correct: 1
+                                }
+                            ]
+                        },
+                        {
+                            id: 3,
+                            title: 'HTML Формы',
+                            description: 'Создание и валидация форм',
+                            duration: '22:10',
+                            videoId: 'fNcJuPIZ2WE',
+                            completed: false,
+                            quiz: [
+                                {
+                                    question: 'Какой тег используется для создания формы?',
+                                    answers: ['<form>', '<input>', '<field>', '<formular>'],
+                                    correct: 0
+                                },
+                                {
+                                    question: 'Как создать текстовое поле ввода?',
+                                    answers: [
+                                        '<input type="text">',
+                                        '<textbox>',
+                                        '<field type="text">',
+                                        '<text>'
+                                    ],
+                                    correct: 0
+                                },
+                                {
+                                    question: 'Какой тег используется для кнопки отправки формы?',
+                                    answers: [
+                                        '<send>',
+                                        '<submit>',
+                                        '<button type="submit">',
+                                        '<input type="send">'
+                                    ],
+                                    correct: 2
+                                },
+                                {
+                                    question: 'Как создать многострочное текстовое поле?',
+                                    answers: ['<input type="multiline">', '<textarea>', '<textfield>', '<multitext>'],
+                                    correct: 1
+                                },
+                                {
+                                    question: 'Какой атрибут делает поле обязательным для заполнения?',
+                                    answers: ['mandatory', 'required', 'must', 'important'],
+                                    correct: 1
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: 'python',
+                    title: 'Python для начинающих',
+                    description: 'Основы программирования на Python',
+                    icon: 'fa-python',
+                    type: 'python',
+                    lessons: [
+                        {
+                            id: 1,
+                            title: 'Введение в Python',
+                            description: 'Установка и первая программа',
+                            duration: '12:15',
+                            videoId: 'rfscVS0vtbw',
+                            completed: false,
+                            quiz: [
+                                {
+                                    question: 'Что выведет команда print("Hello, World!")?',
+                                    answers: ['Hello, World!', '"Hello, World!"', 'Ошибку', 'Ничего'],
+                                    correct: 0
+                                },
+                                {
+                                    question: 'Какая команда используется для вывода текста на экран?',
+                                    answers: ['echo', 'write', 'print', 'output'],
+                                    correct: 2
+                                },
+                                {
+                                    question: 'Как записать комментарий в Python?',
+                                    answers: ['// комментарий', '# комментарий', '/* комментарий */', '-- комментарий'],
+                                    correct: 1
+                                },
+                                {
+                                    question: 'Какое расширение имеют файлы Python?',
+                                    answers: ['.python', '.py', '.pt', '.pyt'],
+                                    correct: 1
+                                },
+                                {
+                                    question: 'Python - это...',
+                                    answers: [
+                                        'Компилируемый язык',
+                                        'Интерпретируемый язык',
+                                        'Язык разметки',
+                                        'Операционная система'
+                                    ],
+                                    correct: 1
+                                }
+                            ]
+                        },
+                        {
+                            id: 2,
+                            title: 'Переменные и типы данных',
+                            description: 'Работа с переменными и основными типами',
+                            duration: '20:30',
+                            videoId: 'OH86oLzVzzw',
+                            completed: false,
+                            quiz: [
+                                {
+                                    question: 'Как правильно создать переменную с числом?',
+                                    answers: ['x = 10', 'int x = 10', 'var x = 10', 'x := 10'],
+                                    correct: 0
+                                },
+                                {
+                                    question: 'Какой тип данных у значения "Hello"?',
+                                    answers: ['int', 'float', 'str', 'text'],
+                                    correct: 2
+                                },
+                                {
+                                    question: 'Как узнать тип переменной x?',
+                                    answers: ['typeof(x)', 'type(x)', 'x.type()', 'gettype(x)'],
+                                    correct: 1
+                                },
+                                {
+                                    question: 'Что такое float?',
+                                    answers: [
+                                        'Целое число',
+                                        'Дробное число',
+                                        'Строка',
+                                        'Логический тип'
+                                    ],
+                                    correct: 1
+                                },
+                                {
+                                    question: 'Как создать логическую переменную со значением истина?',
+                                    answers: ['x = true', 'x = True', 'x = 1', 'x = yes'],
+                                    correct: 1
+                                }
+                            ]
+                        },
+                        {
+                            id: 3,
+                            title: 'Функции в Python',
+                            description: 'Создание и использование функций',
+                            duration: '25:45',
+                            videoId: 'NpmR_WhgN9E',
+                            completed: false,
+                            quiz: [
+                                {
+                                    question: 'Как начать определение функции?',
+                                    answers: ['function name():', 'def name():', 'func name():', 'define name():'],
+                                    correct: 1
+                                },
+                                {
+                                    question: 'Как вернуть значение из функции?',
+                                    answers: ['return значение', 'send значение', 'output значение', 'give значение'],
+                                    correct: 0
+                                },
+                                {
+                                    question: 'Что такое параметр функции?',
+                                    answers: [
+                                        'Результат работы функции',
+                                        'Переменная внутри функции',
+                                        'Входные данные функции',
+                                        'Имя функции'
+                                    ],
+                                    correct: 2
+                                },
+                                {
+                                    question: 'Как вызвать функцию с именем hello?',
+                                    answers: ['call hello()', 'hello()', 'run hello()', 'execute hello()'],
+                                    correct: 1
+                                },
+                                {
+                                    question: 'Может ли функция не возвращать значение?',
+                                    answers: ['Нет, всегда должна', 'Да, может', 'Только если есть return', 'Зависит от типа'],
+                                    correct: 1
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: 'roblox',
+                    title: 'Разработка игр в Roblox',
+                    description: 'Создай свою первую игру в Roblox Studio',
+                    icon: 'fa-gamepad',
+                    type: 'roblox',
+                    lessons: [
+                        {
+                            id: 1,
+                            title: 'Введение в Roblox Studio',
+                            description: 'Знакомство с интерфейсом и инструментами',
+                            duration: '18:20',
+                            videoId: 'IWR5cjxL0RY',
+                            completed: false,
+                            quiz: [
+                                {
+                                    question: 'Что такое Roblox Studio?',
+                                    answers: [
+                                        'Игра от Roblox',
+                                        'Программа для создания игр',
+                                        'Веб-сайт',
+                                        'Мобильное приложение'
+                                    ],
+                                    correct: 1
+                                },
+                                {
+                                    question: 'На каком языке пишутся скрипты в Roblox?',
+                                    answers: ['JavaScript', 'Python', 'Lua', 'C++'],
+                                    correct: 2
+                                },
+                                {
+                                    question: 'Как называется основной объект в игре Roblox?',
+                                    answers: ['Object', 'Part', 'Block', 'Item'],
+                                    correct: 1
+                                },
+                                {
+                                    question: 'Где находятся все объекты игры?',
+                                    answers: ['В проекте', 'В Explorer', 'В Properties', 'В Workspace'],
+                                    correct: 1
+                                },
+                                {
+                                    question: 'Что делает кнопка "Play" в Studio?',
+                                    answers: [
+                                        'Публикует игру',
+                                        'Тестирует игру',
+                                        'Сохраняет проект',
+                                        'Открывает настройки'
+                                    ],
+                                    correct: 1
+                                }
+                            ]
+                        },
+                        {
+                            id: 2,
+                            title: 'Основы создания игр',
+                            description: 'Создание простой карты и объектов',
+                            duration: '24:35',
+                            videoId: 'lXpiJOgCcQs',
+                            completed: false,
+                            quiz: [
+                                {
+                                    question: 'Как создать новый Part в игре?',
+                                    answers: [
+                                        'Правый клик → Insert Object → Part',
+                                        'Insert → Part',
+                                        'Model → Part',
+                                        'Home → Part'
+                                    ],
+                                    correct: 3
+                                },
+                                {
+                                    question: 'Что такое Spawn Location?',
+                                    answers: [
+                                        'Место создания объектов',
+                                        'Место появления игрока',
+                                        'Точка сохранения',
+                                        'Локация на карте'
+                                    ],
+                                    correct: 1
+                                },
+                                {
+                                    question: 'Какое свойство отвечает за цвет объекта?',
+                                    answers: ['Color', 'BrickColor', 'Material', 'Transparency'],
+                                    correct: 1
+                                },
+                                {
+                                    question: 'Что делает свойство Anchored?',
+                                    answers: [
+                                        'Делает объект невидимым',
+                                        'Фиксирует объект на месте',
+                                        'Удаляет объект',
+                                        'Изменяет размер'
+                                    ],
+                                    correct: 1
+                                },
+                                {
+                                    question: 'Как сделать объект прозрачным?',
+                                    answers: [
+                                        'Удалить его',
+                                        'Изменить Transparency',
+                                        'Изменить Color',
+                                        'Снять Anchored'
+                                    ],
+                                    correct: 1
+                                }
+                            ]
+                        },
+                        {
+                            id: 3,
+                            title: 'Программирование в Roblox',
+                            description: 'Основы Lua и создание интерактивности',
+                            duration: '30:15',
+                            videoId: 'v5NH38wB1QY',
+                            completed: false,
+                            quiz: [
+                                {
+                                    question: 'Где нужно писать скрипты в Roblox?',
+                                    answers: [
+                                        'В любом месте',
+                                        'В объекте Script',
+                                        'В Explorer',
+                                        'В Properties'
+                                    ],
+                                    correct: 1
+                                },
+                                {
+                                    question: 'Что делает команда print() в Lua?',
+                                    answers: [
+                                        'Печатает на принтере',
+                                        'Выводит текст в Output',
+                                        'Создает объект',
+                                        'Ничего'
+                                    ],
+                                    correct: 1
+                                },
+                                {
+                                    question: 'Как обратиться к объекту в Workspace?',
+                                    answers: [
+                                        'game.Workspace',
+                                        'workspace',
+                                        'game.Workspace или workspace',
+                                        'game.Objects'
+                                    ],
+                                    correct: 2
+                                },
+                                {
+                                    question: 'Что такое функция в Lua?',
+                                    answers: [
+                                        'Переменная',
+                                        'Блок кода который можно вызвать',
+                                        'Тип данных',
+                                        'Объект в игре'
+                                    ],
+                                    correct: 1
+                                },
+                                {
+                                    question: 'Как создать переменную в Lua?',
+                                    answers: ['var x = 10', 'let x = 10', 'local x = 10', 'x := 10'],
+                                    correct: 2
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        };
+
+        let currentQuizAnswers = [];
+        let currentUserId = null;
+        let userStats = null;
+        let quizTimer = null;
+        let quizStartTime = null;
+        let currentQuestionIndex = 0;
+        let questionStartTimes = [];
+
+        // Initialize app
+        document.addEventListener('DOMContentLoaded', () => {
+            initTelegramWebApp();
+            getUserIdFromToken();
+            loadCourses();
+        });
+
+        // Get user ID from token
+        function getUserIdFromToken() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const token = urlParams.get('token');
+            
+            if (token) {
+                try {
+                    // Decode JWT token (simple base64 decode for payload)
+                    const payload = JSON.parse(atob(token.split('.')[1]));
+                    currentUserId = parseInt(payload.sub);
+                    loadUserStats();
+                } catch (e) {
+                    console.error('Error parsing token:', e);
+                }
+            } else {
+                // For testing without token
+                currentUserId = 1;
+                loadUserStats();
+            }
+        }
+
+        // Load user statistics
+        async function loadUserStats() {
+            if (!currentUserId) return;
+            
+            try {
+                const response = await fetch(`/api/stats/${currentUserId}`);
+                if (response.ok) {
+                    const data = await response.json();
+                    userStats = data;
+                    updateHomePage(data);
+                    updateHeader(data.user);
+                } else {
+                    console.error('Failed to load user stats');
+                }
+            } catch (error) {
+                console.error('Error loading user stats:', error);
+            }
+        }
+
+        // Update home page with user data
+        function updateHomePage(data) {
+            const user = data.user;
+            
+            // Update welcome card
+            document.getElementById('welcome-title').textContent = `🎉 Привет, ${user.full_name || 'Студент'}!`;
+            
+            // Update streak
+            document.getElementById('streak-days').textContent = `${user.streak} ${getDaysText(user.streak)} подряд`;
+            document.getElementById('streak-message').textContent = user.streak > 0 
+                ? 'Отличная работа! Продолжай!' 
+                : 'Начни свою серию!';
+            
+            // Update daily goal
+            const dailyProgress = Math.min((user.daily_xp / user.daily_goal) * 100, 100);
+            document.getElementById('daily-xp-text').textContent = `${user.daily_xp} / ${user.daily_goal} XP`;
+            document.getElementById('daily-progress').style.width = `${dailyProgress}%`;
+            document.getElementById('daily-progress-text').textContent = 
+                dailyProgress >= 100 ? '🎉 Цель достигнута!' : `${user.daily_xp} / ${user.daily_goal} XP выполнено`;
+            
+            // Update stats
+            document.getElementById('stat-xp').textContent = user.xp;
+            document.getElementById('stat-level').textContent = user.level;
+            document.getElementById('stat-coins').textContent = user.coins;
+            document.getElementById('header-coins').textContent = user.coins;
+            document.getElementById('header-streak').textContent = user.streak;
+            
+            // Update level progress
+            const currentLevelXP = user.xp - ((user.level - 1) * 100);
+            const levelProgress = Math.min(Math.max((currentLevelXP / 100) * 100, 0), 100);
+            document.getElementById('level-progress').style.width = `${levelProgress}%`;
+            document.getElementById('level-progress-text').textContent = `${Math.max(currentLevelXP, 0)} / 100 XP`;
+            
+            // Update achievements
+            updateAchievements(user.achievements);
+        }
+
+        function getDaysText(days) {
+            if (days % 10 === 1 && days % 100 !== 11) return 'день';
+            if ([2, 3, 4].includes(days % 10) && ![12, 13, 14].includes(days % 100)) return 'дня';
+            return 'дней';
+        }
+
+        function updateAchievements(achievements) {
+            const achievementsList = document.getElementById('achievements-list');
+            const allAchievements = [
+                { id: '7_day_streak', icon: '🔥', name: '7 дней', description: '7 дней подряд' },
+                { id: '30_day_streak', icon: '🌟', name: '30 дней', description: '30 дней подряд' },
+                { id: '10_lessons', icon: '📚', name: '10 уроков', description: 'Пройдено 10 уроков' },
+                { id: 'level_5', icon: '⭐', name: 'Уровень 5', description: 'Достигнут 5 уровень' }
+            ];
+            
+            achievementsList.innerHTML = allAchievements.map(ach => `
+                <div class="achievement-badge ${achievements.includes(ach.id) ? 'earned' : ''}">
+                    <i class="fas fa-${ach.id === '7_day_streak' ? 'fire' : ach.id === '30_day_streak' ? 'star' : ach.id === '10_lessons' ? 'book' : 'trophy'}"></i>
+                    <span>${ach.name}</span>
+                </div>
+            `).join('');
+        }
+
+        function updateHeader(user) {
+            if (user) {
+                document.getElementById('header-coins').textContent = user.coins || 0;
+                document.getElementById('header-streak').textContent = user.streak || 0;
+            }
+        }
+
+        // Telegram WebApp initialization
+        function initTelegramWebApp() {
+            if (window.Telegram && window.Telegram.WebApp) {
+                const tg = window.Telegram.WebApp;
+                tg.expand();
+                
+                const theme = tg.colorScheme || 'light';
+                document.documentElement.setAttribute('data-theme', theme);
+                
+                tg.onEvent('themeChanged', () => {
+                    const newTheme = tg.colorScheme || 'light';
+                    document.documentElement.setAttribute('data-theme', newTheme);
+                });
+            }
+        }
+
+        // Show page
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            const page = document.getElementById(pageId);
+            if (page) {
+                page.classList.add('active');
+            }
+            
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            const activeNav = Array.from(document.querySelectorAll('.nav-item')).find(
+                item => item.getAttribute('onclick') && item.getAttribute('onclick').includes(pageId)
+            );
+            
+            if (activeNav) {
+                activeNav.classList.add('active');
+            }
+
+            window.scrollTo(0, 0);
+            
+            // Reload stats on home page or profile page
+            if ((pageId === 'home' || pageId === 'profile') && currentUserId) {
+                if (pageId === 'home') {
+                    loadUserStats();
+                } else if (pageId === 'profile') {
+                    loadProfileData();
+                }
+            }
+        }
+
+        // Load profile data
+        async function loadProfileData() {
+            if (!currentUserId) return;
+            
+            try {
+                const response = await fetch(`/api/stats/${currentUserId}`);
+                if (response.ok) {
+                    const data = await response.json();
+                    updateProfilePage(data);
+                }
+            } catch (error) {
+                console.error('Error loading profile data:', error);
+            }
+        }
+
+        // Update profile page
+        function updateProfilePage(data) {
+            const user = data.user;
+            
+            // Update header
+            document.getElementById('profile-name').textContent = user.full_name || 'Пользователь';
+            document.getElementById('profile-level').textContent = `Уровень ${user.level}`;
+            
+            // Update stats
+            document.getElementById('profile-coins').textContent = user.coins;
+            document.getElementById('profile-xp').textContent = user.xp;
+            document.getElementById('profile-streak').textContent = user.streak;
+            
+            // Update level progress
+            const currentLevelXP = user.xp - ((user.level - 1) * 100);
+            const levelProgress = Math.min(Math.max((currentLevelXP / 100) * 100, 0), 100);
+            document.getElementById('profile-level-progress').style.width = `${levelProgress}%`;
+            document.getElementById('profile-level-text').textContent = `${Math.max(currentLevelXP, 0)} / 100 XP`;
+            
+            // Update courses stats
+            const coursesStatsContainer = document.getElementById('profile-courses-stats');
+            coursesStatsContainer.innerHTML = Object.entries(data.courses).map(([courseId, stats]) => {
+                const course = config.courses.find(c => c.id === courseId);
+                if (!course) return '';
+                return `
+                    <div style="margin-bottom: 15px; padding: 15px; background: var(--bg-secondary); border-radius: 12px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                            <h4 style="font-size: 16px; font-weight: 700;">${course.title}</h4>
+                            <span style="font-size: 14px; color: var(--text-secondary);">${stats.completed} / ${stats.total}</span>
+                        </div>
+                        <div class="progress-bar" style="height: 8px;">
+                            <div class="progress-fill" style="width: ${stats.progress}%"></div>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-top: 8px; font-size: 12px; color: var(--text-secondary);">
+                            <span>Прогресс: ${stats.progress}%</span>
+                            ${stats.average_score > 0 ? `<span>Средний балл: ${stats.average_score}%</span>` : ''}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            // Update achievements
+            const achievementsContainer = document.getElementById('profile-achievements');
+            const allAchievements = [
+                { id: '7_day_streak', icon: 'fire', name: '7 дней подряд', description: 'Занимайся 7 дней подряд' },
+                { id: '30_day_streak', icon: 'star', name: '30 дней подряд', description: 'Занимайся 30 дней подряд' },
+                { id: '10_lessons', icon: 'book', name: '10 уроков', description: 'Пройди 10 уроков' },
+                { id: 'level_5', icon: 'trophy', name: 'Уровень 5', description: 'Достигни 5 уровень' }
+            ];
+            
+            achievementsContainer.innerHTML = allAchievements.map(ach => `
+                <div class="achievement-badge ${user.achievements.includes(ach.id) ? 'earned' : ''}" style="margin-bottom: 10px;">
+                    <i class="fas fa-${ach.icon}"></i>
+                    <span>${ach.name}</span>
+                    <span style="font-size: 11px; opacity: 0.7;">${ach.description}</span>
+                </div>
+            `).join('');
+        }
+
+
+        // Load all courses
+        async function loadCourses() {
+            const container = document.getElementById('courses-list');
+            if (!container) return;
+            
+            // Load progress from API
+            let courseProgress = {};
+            if (currentUserId) {
+                try {
+                    const progressResponse = await fetch(`/api/progress/${currentUserId}`);
+                    if (progressResponse.ok) {
+                        const progressData = await progressResponse.json();
+                        // Organize progress by course
+                        for (const [key, progress] of Object.entries(progressData)) {
+                            if (!courseProgress[progress.course_id]) {
+                                courseProgress[progress.course_id] = {};
+                            }
+                            courseProgress[progress.course_id][progress.lesson_id] = progress.completed;
+                        }
+                    }
+                } catch (error) {
+                    console.error('Error loading progress:', error);
+                }
+            }
+            
+            container.innerHTML = config.courses.map(course => {
+                const progressData = courseProgress[course.id] || {};
+                const completed = course.lessons.filter(l => progressData[l.id]).length;
+                const progress = Math.round((completed / course.lessons.length) * 100);
+                
+                return `
+                    <div class="course-card" onclick="openCourse('${course.id}')">
+                        <div class="course-image ${course.type}">
+                            <i class="fab ${course.icon}"></i>
+                            ${progress > 0 ? `<div class="course-progress">${progress}%</div>` : ''}
+                        </div>
+                        <div class="course-body">
+                            <h3>${course.title}</h3>
+                            <p>${course.description}</p>
+                            <div class="course-meta">
+                                <div class="course-lessons">
+                                    <i class="fas fa-book-open"></i>
+                                    <span>${course.lessons.length} уроков</span>
+                                </div>
+                                <button class="btn btn-primary" onclick="event.stopPropagation(); openCourse('${course.id}')">
+                                    ${progress > 0 ? 'Продолжить' : 'Начать'}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Open course detail
+        async function openCourse(courseId) {
+            const course = config.courses.find(c => c.id === courseId);
+            if (!course) return;
+            
+            config.currentCourse = course;
+            
+            document.getElementById('course-title').textContent = course.title;
+            document.getElementById('course-description').textContent = course.description;
+            
+            // Load progress from API
+            let lessonProgress = {};
+            if (currentUserId) {
+                try {
+                    const progressResponse = await fetch(`/api/progress/${currentUserId}/${courseId}`);
+                    if (progressResponse.ok) {
+                        const progressData = await progressResponse.json();
+                        progressData.progress.forEach(p => {
+                            lessonProgress[p.lesson_id] = p.completed;
+                        });
+                    }
+                } catch (error) {
+                    console.error('Error loading progress:', error);
+                }
+            }
+            
+            const lessonsList = document.getElementById('lessons-list');
+            lessonsList.innerHTML = course.lessons.map((lesson, index) => {
+                const isCompleted = lessonProgress[lesson.id] || false;
+                return `
+                    <div class="lesson-item ${isCompleted ? 'completed' : ''}" onclick="openLesson('${course.id}', ${lesson.id})">
+                        <div class="lesson-number">${index + 1}</div>
+                        <div class="lesson-content">
+                            <h4>${lesson.title}</h4>
+                            <p>${lesson.description}</p>
+                            <div class="lesson-meta">
+                                <span>
+                                    <i class="far fa-clock"></i>
+                                    ${lesson.duration}
+                                </span>
+                                ${isCompleted ? `
+                                    <span class="lesson-completed-badge">
+                                        <i class="fas fa-check-circle"></i>
+                                        Завершено
+                                    </span>
+                                ` : ''}
+                            </div>
+                        </div>
+                        <button class="play-btn" onclick="event.stopPropagation(); openLesson('${course.id}', ${lesson.id})">
+                            <i class="fas fa-play"></i>
+                        </button>
+                    </div>
+                `;
+            }).join('');
+            
+            showPage('course-detail');
+        }
+
+        // Open lesson
+        function openLesson(courseId, lessonId) {
+            const course = config.courses.find(c => c.id === courseId);
+            if (!course) return;
+            
+            const lesson = course.lessons.find(l => l.id === lessonId);
+            if (!lesson) return;
+            
+            config.currentLesson = lesson;
+            
+            // Load video
+            const videoContainer = document.getElementById('lesson-video');
+            videoContainer.innerHTML = `
+                <iframe
+                    src="https://www.youtube.com/embed/${lesson.videoId}?rel=0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            `;
+            
+            // Load description
+            const descContainer = document.getElementById('lesson-description-content');
+            descContainer.innerHTML = `
+                <h3>${lesson.title}</h3>
+                <p>${lesson.description}</p>
+                <p style="margin-top: 10px; color: var(--text-secondary);">
+                    <i class="far fa-clock"></i> ${lesson.duration}
+                </p>
+            `;
+            
+            // Load quiz
+            loadQuiz(lesson);
+            
+            showPage('lesson');
+        }
+
+        // Load quiz with timer and navigation
+        function loadQuiz(lesson) {
+            if (!lesson || !lesson.quiz || lesson.quiz.length === 0) {
+                console.error('Invalid lesson data:', lesson);
+                return;
+            }
+            
+            console.log('Loading quiz with', lesson.quiz.length, 'questions');
+            
+            currentQuizAnswers = new Array(lesson.quiz.length).fill(null);
+            currentQuestionIndex = 0;
+            questionStartTimes = new Array(lesson.quiz.length).fill(null);
+            quizStartTime = Date.now();
+            
+            const quizContainer = document.getElementById('quiz-section');
+            if (!quizContainer) {
+                console.error('Quiz container not found!');
+                return;
+            }
+            
+            // Progress dots
+            const progressDots = lesson.quiz.map((_, idx) => 
+                `<div class="quiz-progress-dot ${idx === 0 ? 'current' : ''}" id="progress-dot-${idx}"></div>`
+            ).join('');
+            
+            quizContainer.innerHTML = `
+                <div class="quiz-header">
+                    <h3><i class="fas fa-question-circle"></i> Тест по уроку</h3>
+                    <div class="quiz-score" id="quiz-score">0 / ${lesson.quiz.length}</div>
+                </div>
+                
+                <div class="quiz-timer" id="quiz-timer">
+                    <i class="fas fa-clock"></i>
+                    <span id="timer-text">00:00</span>
+                </div>
+                
+                <div class="quiz-progress-indicator">
+                    ${progressDots}
+                </div>
+                
+                <div id="quiz-questions-container">
+                    ${lesson.quiz && lesson.quiz.length > 0 ? lesson.quiz.map((q, qIndex) => {
+                        if (!q || !q.question || !q.answers) {
+                            console.error('Invalid question data:', q);
+                            return '';
+                        }
+                        const questionHtml = `
+                        <div class="question-card" data-question="${qIndex}" style="display: ${qIndex === 0 ? 'block' : 'none'};">
+                            <div class="quiz-question-counter">Вопрос ${qIndex + 1} из ${lesson.quiz.length}</div>
+                            <div class="question-text">${String(q.question || '').replace(/</g, '&lt;').replace(/>/g, '&gt;')}</div>
+                            <div class="answers-list">
+                                ${q.answers && q.answers.length > 0 ? q.answers.map((answer, aIndex) => {
+                                    const answerText = String(answer || '').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+                                    return `
+                                    <div class="answer-option" onclick="selectAnswer(${qIndex}, ${aIndex})" id="answer-${qIndex}-${aIndex}">
+                                        <div class="answer-letter">${String.fromCharCode(65 + aIndex)}</div>
+                                        <span>${answerText}</span>
+                                    </div>
+                                `;
+                                }).join('') : '<div class="answer-option"><span>Нет вариантов ответа</span></div>'}
+                            </div>
+                        </div>
+                    `;
+                        console.log(`Question ${qIndex + 1}:`, q.question, 'Answers:', q.answers);
+                        return questionHtml;
+                    }).join('') : '<div class="question-card"><div class="question-text">Тест не загружен</div></div>'}
+                </div>
+                
+                <div class="question-nav">
+                    <button class="btn-nav" id="prev-question" onclick="navigateQuestion(-1)" disabled>← Назад</button>
+                    <button class="btn-nav" id="next-question" onclick="navigateQuestion(1)">Далее →</button>
+                </div>
+                
+                <div class="quiz-actions" style="margin-top: 20px;">
+                    <button class="btn-submit" onclick="submitQuiz()" id="submit-quiz-btn" disabled>Проверить ответы</button>
+                </div>
+            `;
+            
+            // Start timer
+            startQuizTimer();
+            
+            // Record start time for first question
+            questionStartTimes[0] = Date.now();
+        }
+
+        // Start quiz timer
+        function startQuizTimer() {
+            let seconds = 0;
+            quizTimer = setInterval(() => {
+                seconds++;
+                const minutes = Math.floor(seconds / 60);
+                const secs = seconds % 60;
+                const timerText = `${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+                document.getElementById('timer-text').textContent = timerText;
+                
+                const timerEl = document.getElementById('quiz-timer');
+                // Change color based on time
+                if (seconds > 300) { // 5 minutes
+                    timerEl.classList.add('danger');
+                    timerEl.classList.remove('warning');
+                } else if (seconds > 180) { // 3 minutes
+                    timerEl.classList.add('warning');
+                }
+            }, 1000);
+        }
+
+        // Navigate between questions
+        function navigateQuestion(direction) {
+            const lesson = config.currentLesson;
+            const totalQuestions = lesson.quiz.length;
+            const newIndex = currentQuestionIndex + direction;
+            
+            if (newIndex < 0 || newIndex >= totalQuestions) return;
+            
+            // Hide current question
+            document.querySelector(`[data-question="${currentQuestionIndex}"]`).style.display = 'none';
+            document.getElementById(`progress-dot-${currentQuestionIndex}`).classList.remove('current');
+            if (currentQuizAnswers[currentQuestionIndex] !== null) {
+                document.getElementById(`progress-dot-${currentQuestionIndex}`).classList.add('answered');
+            }
+            
+            // Show new question
+            currentQuestionIndex = newIndex;
+            document.querySelector(`[data-question="${currentQuestionIndex}"]`).style.display = 'block';
+            document.getElementById(`progress-dot-${currentQuestionIndex}`).classList.add('current');
+            
+            // Update navigation buttons
+            document.getElementById('prev-question').disabled = currentQuestionIndex === 0;
+            document.getElementById('next-question').disabled = currentQuestionIndex === totalQuestions - 1;
+            
+            // Update submit button
+            const allAnswered = currentQuizAnswers.every(a => a !== null);
+            document.getElementById('submit-quiz-btn').disabled = !allAnswered;
+            
+            // Record question start time
+            if (questionStartTimes[currentQuestionIndex] === null) {
+                questionStartTimes[currentQuestionIndex] = Date.now();
+            }
+        }
+
+        // Select answer
+        function selectAnswer(questionIndex, answerIndex) {
+            currentQuizAnswers[questionIndex] = answerIndex;
+            
+            // Update UI
+            const questionCard = document.querySelector(`[data-question="${questionIndex}"]`);
+            questionCard.querySelectorAll('.answer-option').forEach((opt, idx) => {
+                if (idx === answerIndex) {
+                    opt.classList.add('selected');
+                } else {
+                    opt.classList.remove('selected');
+                }
+            });
+            
+            // Update progress dot
+            document.getElementById(`progress-dot-${questionIndex}`).classList.add('answered');
+            
+            // Update score display (preview)
+            updateQuizScorePreview();
+            
+            // Check if all answered
+            const allAnswered = currentQuizAnswers.every(a => a !== null);
+            const submitBtn = document.getElementById('submit-quiz-btn');
+            if (submitBtn) {
+                submitBtn.disabled = !allAnswered;
+            }
+        }
+
+        // Update quiz score preview
+        function updateQuizScorePreview() {
+            const lesson = config.currentLesson;
+            let correct = 0;
+            lesson.quiz.forEach((q, qIndex) => {
+                if (currentQuizAnswers[qIndex] === q.correct) {
+                    correct++;
+                }
+            });
+            const scoreEl = document.getElementById('quiz-score');
+            if (scoreEl) {
+                scoreEl.textContent = `${correct} / ${lesson.quiz.length}`;
+            }
+        }
+
+        // Submit quiz
+        async function submitQuiz() {
+            // Stop timer
+            if (quizTimer) {
+                clearInterval(quizTimer);
+            }
+            
+            const lesson = config.currentLesson;
+            const course = config.currentCourse;
+            let correct = 0;
+            const totalTime = Math.floor((Date.now() - quizStartTime) / 1000);
+            
+            // Calculate score and show results
+            lesson.quiz.forEach((q, qIndex) => {
+                const questionCard = document.querySelector(`[data-question="${qIndex}"]`);
+                if (!questionCard) return;
+                
+                const options = questionCard.querySelectorAll('.answer-option');
+                
+                options.forEach((opt, aIndex) => {
+                    opt.classList.add('disabled');
+                    opt.style.pointerEvents = 'none';
+                    if (aIndex === q.correct) {
+                        opt.classList.add('correct');
+                    }
+                    if (aIndex === currentQuizAnswers[qIndex] && aIndex !== q.correct) {
+                        opt.classList.add('incorrect');
+                    }
+                });
+                
+                if (currentQuizAnswers[qIndex] === q.correct) {
+                    correct++;
+                }
+                
+                // Save response to API
+                if (currentUserId) {
+                    saveResponseToAPI(qIndex, currentQuizAnswers[qIndex], q.correct === currentQuizAnswers[qIndex], questionStartTimes[qIndex] ? Math.floor((Date.now() - questionStartTimes[qIndex]) / 1000) : 0);
+                }
+            });
+            
+            const percentage = Math.round((correct / lesson.quiz.length) * 100);
+            const score = percentage;
+            const passed = percentage >= 60;
+            
+            // Save progress to API
+            if (currentUserId && course) {
+                try {
+                    const progressResponse = await fetch('/api/progress', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            user_id: currentUserId,
+                            course_id: course.id,
+                            lesson_id: lesson.id,
+                            completed: passed,
+                            score: score,
+                            time_spent: totalTime
+                        })
+                    });
+                    
+                    if (progressResponse.ok) {
+                        const progressData = await progressResponse.json();
+                        
+                        // Reload user stats
+                        await loadUserStats();
+                        
+                        // Show achievements if any
+                        if (progressData.achievements && progressData.achievements.length > 0) {
+                            progressData.achievements.forEach(ach => {
+                                showToast(`🏆 Достижение разблокировано!`);
+                            });
+                        }
+                        
+                        // Show XP gained
+                        if (progressData.xp_gained > 0) {
+                            showToast(`🎉 +${progressData.xp_gained} XP! Монеты: +5`);
+                        }
+                    }
+                } catch (error) {
+                    console.error('Error saving progress:', error);
+                }
+            }
+            
+            // Reload courses to update progress
+            await loadCourses();
+            
+            // Show result
+            document.getElementById('quiz-section').innerHTML = `
+                <div class="quiz-result">
+                    <h3>🎊 Тест завершен!</h3>
+                    <div class="score">${correct} / ${lesson.quiz.length}</div>
+                    <p>Вы правильно ответили на ${percentage}% вопросов!</p>
+                    <p style="font-size: 14px; opacity: 0.8; margin-top: 10px;">
+                        <i class="fas fa-clock"></i> Время: ${formatTime(totalTime)}
+                    </p>
+                    ${passed ? 
+                        '<p style="margin-top: 15px;">✅ Отличная работа! Урок пройден!</p>' : 
+                        '<p style="margin-top: 15px;">❌ Нужно набрать минимум 60% для прохождения</p>'
+                    }
+                    <button class="btn-next-lesson" onclick="backToCourse()" style="margin-top: 20px;">
+                        ${passed ? 'Вернуться к урокам' : 'Попробовать еще раз'}
+                    </button>
+                </div>
+            `;
+        }
+
+        // Save response to API
+        async function saveResponseToAPI(questionIndex, answerIndex, isCorrect, responseTime) {
+            if (!currentUserId || !config.currentCourse || !config.currentLesson) return;
+            
+            try {
+                await fetch('/api/response', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        user_id: currentUserId,
+                        course_id: config.currentCourse.id,
+                        lesson_id: config.currentLesson.id,
+                        question_index: questionIndex,
+                        answer_index: answerIndex,
+                        is_correct: isCorrect,
+                        response_time: responseTime
+                    })
+                });
+            } catch (error) {
+                console.error('Error saving response:', error);
+            }
+        }
+
+        // Format time
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = seconds % 60;
+            return `${mins}:${String(secs).padStart(2, '0')}`;
+        }
+
+        // Back to course
+        function backToCourse() {
+            if (config.currentCourse) {
+                openCourse(config.currentCourse.id);
+            } else {
+                showPage('courses');
+            }
+        }
+
+        // Show toast notification
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => toast.classList.add('show'), 100);
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
